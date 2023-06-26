@@ -353,3 +353,4 @@ if __name__ == '__main__':
 
     plt.hist(gen_context_position, bins=range(min(gen_context_position), max(gen_context_position)))
     plt.show()
+    plt.savefig("plot.png")
