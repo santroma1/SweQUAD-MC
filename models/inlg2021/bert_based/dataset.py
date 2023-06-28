@@ -39,9 +39,9 @@ class DistractorDataset(GenericDataset):
                     "distractors": set()
                 })
                 for c in dp["choices"]:
-                    if c["type"] == "Correct answer":
+                    if (c["type"] == "Correct answer") or (c["type"] == "correct answer"):
                         self._data[-1]["correct"] = get_text(c, "comment")
-                    elif c["type"] == "Distractor":
+                    elif (c["type"] == "Distractor") or (c["type"] == "distractor"):
                         self._data[-1]["distractors"].add(get_text(c, "comment"))
 
 
