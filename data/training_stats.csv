@@ -1,0 +1,12 @@
+,training
+# of texts,434
+# of MCQs,962
+# of D,2.15 +- 0.54
+Len(Text),380.69 +- 332.80
+Max(Text),2142.0
+Len(A),4.19 +- 3.44
+Max(A),23.0
+Len(D),4.32 +- 3.84
+Max(D),24
+|Len(A) - Len(D)|,2.06 +- 2.12
+Max(|Len(A) - Len(D)|),13.5
