@@ -209,10 +209,11 @@ if __name__ == '__main__':
     dg_args = torch.load(args.dg_file)
 
     if args.output:
-        out_file = open(args.output, 'w')
+        out_f_name = f"{args.output}-{args.file[-5:]}.txt"
+        out_file = open(out_f_name, 'w')
         sys.stdout = out_file
 
-    tok = AutoTokenizer.from_pretrained(dg_args.model, local_files_only=True)
+    tok = AutoTokenizer.from_pretrained(dg_args.model, local_files_only=False)
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     # device = 'cpu'

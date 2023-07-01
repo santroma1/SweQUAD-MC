@@ -4,10 +4,13 @@ import argparse
 from difflib import SequenceMatcher
 from pprint import pprint
 from collections import defaultdict
+import numpy as np
+import pandas as pd
 
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy import stats
+import os
 
 from terminaltables import AsciiTable
 
@@ -91,10 +94,17 @@ def is_same_context(ctx, dataset, overlap=False):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-f', '--file', type=str, required=True, help="Report file to process")
+    parser.add_argument('-od', '--output-dir', type=str, required=True, help="Output dir for Data")
     parser.add_argument('-t', '--training-data', type=str, default="", help="Training data file")
+    parser.add_argument('-pr', '--pretrained', type=str, default="KB/bert-base-swedish-cased", help="pre-trained from HIggingFace")
     args = parser.parse_args()
 
-    tok = AutoTokenizer.from_pretrained("KB/bert-base-swedish-cased")
+    model_name = args.file[7:12]
+    model_iters = args.file[-9:-4]
+    csv_name = f"{model_name}_{model_iters}"
+    csv_file = f"{args.output_dir}/{csv_name}.csv"
+
+    tok = AutoTokenizer.from_pretrained(args.pretrained)
 
     training_data = json.load(open(args.training_data)) if args.training_data else None
 
@@ -348,9 +358,15 @@ if __name__ == '__main__':
         #     round(len(report["context_overlaps_with_training_data"]) * 100 / report["total"], 2))]
     ]
 
+    table_data_arr = np.array(table_data)
+    series = pd.Series(table_data_arr[:,1], index=table_data_arr[:,0], name=csv_name)
+    series.to_csv(csv_file)
+
+    
     t = AsciiTable(table_data)
     print(t.table)
 
     plt.hist(gen_context_position, bins=range(min(gen_context_position), max(gen_context_position)))
     plt.show()
-    plt.savefig("plot.png")
+    fg_name = os.path.join(args.output_dir, "plot.png")
+    plt.savefig(fg_name)

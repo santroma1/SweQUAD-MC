@@ -1,0 +1,27 @@
+,upmlm_16000
+Metric,Value
+Total,126
+Any of the generated distractors matches with a gold one,34.13%
+The correct answer is among generated distractors,4.76%
+Any (but not all) generated distractors are the same,11.9%
+All generated distractors are the same,0.0%
+Any distractor is capitalized differently from the correct answer,8.73%
+Any distractor contains repetitive words,3.97%
+Any distractor is an empty string,0.0%
+(A) Any distractor is in its own context,70.63%
+(B) Any distractor is in any context from training data,52.38%
+(C) Any distractor is a distractor from training data,36.51%
+(A) and (B),48.41%
+(A) and (C),33.33%
+(A1) All distractors are in their own context,13.49%
+(B1) All distractors are in any context from training data,22.22%
+(C1) All distractors are distractors from training data,5.56%
+(A1) and (B1),8.73%
+(A1) and (C1),0.79%
+Normalized conv. kernel (SO),0.41 +/- 0.41
+Median normalized conv. kernel (SO),0.22
+Mode normalized conv. kernel (SO),1.0 (19.56%)
+"Normalized conv. kernel (SO, feats)",0.3 +/- 0.36
+"Median normalized conv. kernel (SO, feats)",0.1
+"Mode normalized conv. kernel (SO, feats)",1.0 (12.12%)
+Distractor recall,18.05%

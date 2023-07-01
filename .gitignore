@@ -6,6 +6,8 @@ __pycache__/
 # C extensions
 *.so
 
+models/inlg2021/bert_based/output/*
+
 # Distribution / packaging
 .Python
 build/
